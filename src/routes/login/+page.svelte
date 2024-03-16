@@ -1,11 +1,15 @@
 <script>
+	import { goto } from "$app/navigation";
+	import { signIn } from "$lib/firebase/login";
+	import { sign } from "crypto";
+
   let email = '';
   let password = '';
 
   function handleLogin() {
     // Implement your login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+    signIn(email, password);
+    goto('/home');
     // You can add your login logic here, such as API calls for authentication
   }
 </script>

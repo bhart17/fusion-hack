@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { signIn, signOut } from '$lib/firebase/login';
 	import { user } from '$lib/firebase/client/auth';
+	export let data
 </script>
 
 <div class="navbar bg-base-100">
@@ -8,7 +9,7 @@
 		<a class="btn btn-ghost text-xl">FabricFusion</a>
 	</div>
 	<div class="flex-none">
-		<ul class="menu menu-horizontal px-1">
+		<!-- <ul class="menu menu-horizontal px-1">
 			<li><a href="\login">Log In</a></li>
 			<li>
 				<details>
@@ -19,7 +20,7 @@
 					</ul>
 				</details>
 			</li>
-		</ul>
+		</ul> -->
 	</div>
 </div>
 

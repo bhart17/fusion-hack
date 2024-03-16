@@ -10,3 +10,7 @@
 current user: {$user?.email}
 <button class="btn" on:click={() => {signIn("user@test.com", "password")}}>Login</button>
 <button class="btn" on:click={signOut}>Logout</button>
+
+<button>
+    <a href = "/login">Go to login page</a>
+</button>

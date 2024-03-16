@@ -9,7 +9,7 @@
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal px-1">
-        <li><a>Log In</a></li>
+        <li><a href = "\login">Log In</a></li>
         <li>
           <details>
             <summary>
@@ -82,7 +82,7 @@ current user: {$user?.email}
 <button>
     <a href = "/login">Go to login page</a>
 </button>
-<h1 class="text-3xl font-bold">Currently Watching</h1>
+<h1 class="text-3xl font-bold">Your projects</h1>
 <div class="flex w-full">
     <div class="card card-compact w-96 bg-base-100 shadow-xl">
         <figure><img src="https://www.akeneo.com/wp-content/uploads/2023/09/AdobeStock_589899369-scaled.jpeg" alt="Sustainable clothing logo" /></figure>

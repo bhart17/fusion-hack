@@ -53,7 +53,7 @@
           </label>
           <input type="password" placeholder="password" class="input input-bordered" bind:value={password} required />
           <label class="label">
-            <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+            <a href="/" class="label-text-alt link link-hover">Forgot password?</a>
           </label>
         </div>
         <div class="register-link">

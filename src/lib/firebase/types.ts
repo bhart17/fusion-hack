@@ -10,6 +10,7 @@ type UserDoc = {
 	followers: Array<DocumentReference>;
 	following: Array<DocumentReference>;
 	image: string;
+    watching: Array<DocumentReference>;
 };
 
 type ProjectDoc = {

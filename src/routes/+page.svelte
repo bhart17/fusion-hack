@@ -57,7 +57,7 @@
           </label>
         </div>
         <div class="register-link">
-          <p>Don't have an account? <a href="/">
+          <p>Don't have an account? <a href="/signup">
             Register
           </a></p>
         </div>

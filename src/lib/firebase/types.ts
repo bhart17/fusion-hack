@@ -10,6 +10,7 @@ type UserDoc = {
     hostprojects : Array<DocumentReference>;
     followers : Array<DocumentReference>;
     following: Array<DocumentReference>;
+    image: string;
 };
 
 type ProjectDoc = {

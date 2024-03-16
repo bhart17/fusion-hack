@@ -4,7 +4,7 @@ import { getAuth, onAuthStateChanged, type User } from 'firebase/auth';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { derived, readable, type Readable } from 'svelte/store';
 import { firestore } from '$lib/firebase/client/firestore';
-import type { UserData } from '$lib/firebase/types';
+import type { UserDoc } from '$lib/firebase/types';
 
 export const auth = getAuth(app);
 
@@ -40,7 +40,7 @@ const userStore = () => {
 const userDataStore = () => {
 	let unsubscribe = () => {};
 
-	const { subscribe } = derived<Readable<User | null>, UserData | null | undefined>(
+	const { subscribe } = derived<Readable<User | null>, UserDoc | null | undefined>(
 		user,
 		($user, set) => {
 			if ($user) {

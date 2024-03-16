@@ -1,3 +1,3 @@
-type UserData = {};
+type UserDoc = {};
 
-export type { UserData };
+export type { UserDoc };

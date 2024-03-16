@@ -40,7 +40,16 @@ async function signOut() {
 }
 
 async function signUp(email: string, password: string) {
-	await createUserWithEmailAndPassword(auth, email, password);
+	const credential = await createUserWithEmailAndPassword(auth, email, password);
+	const idToken = await credential.user.getIdToken();
+
+	const res = await fetch('/api/auth', {
+		method: 'post',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ idToken })
+	});
 }
 
 export { signIn, signOut, signUp };

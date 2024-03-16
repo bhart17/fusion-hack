@@ -1,15 +1,15 @@
 import type { Timestamp, DocumentReference, CollectionReference } from 'firebase/firestore';
 
 type UserDoc = {
-    dob : Timestamp;
-    donatedprojects : Array<DocumentReference>;
-    email: string;
-    name: string;
-    username: string;
-    hostprojects : Array<DocumentReference>;
-    followers : Array<DocumentReference>;
-    following: Array<DocumentReference>;
-    image: string;
+	dob: Timestamp;
+	donatedprojects: Array<DocumentReference>;
+	email: string;
+	name: string;
+	username: string;
+	hostprojects: Array<DocumentReference>;
+	followers: Array<DocumentReference>;
+	following: Array<DocumentReference>;
+	image: string;
 };
 
 type ProjectDoc = {

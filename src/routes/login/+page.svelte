@@ -1,14 +1,38 @@
 <script>
+    import { signIn, signOut } from "$lib/firebase/login";
+    import { user } from "$lib/firebase/client/auth";
+
   let email = '';
   let password = '';
 
   function handleLogin() {
-    // Implement your login logic here
+    signIn(email, password);
     console.log('Email:', email);
     console.log('Password:', password);
-    // You can add your login logic here, such as API calls for authentication
   }
 </script>
+
+<div class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl" href = "/">FabricFusion</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href = "\login">Log In</a></li>
+      <li>
+        <details>
+          <summary>
+            Parent
+          </summary>
+          <ul class="p-2 bg-base-100 rounded-t-none">
+            <li><a>Link 1</a></li>
+            <li><a>Link 2</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <style>
   /* Add your custom styles here */
@@ -55,6 +79,12 @@
     <label for="password">Password:</label>
     <input type="password" id="password" bind:value={password} required>
 
+    current user: {$user?.email}
     <button type="submit">Login</button>
   </form>
 </div>
+
+<form on:submit|preventDefault={signOut}>
+    <button type="submit">Logout</button>
+</form>
+

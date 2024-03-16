@@ -3,7 +3,7 @@
 	import { user } from '$lib/firebase/client/auth';
 </script>
 
-<div class="w-screen h-screen bg-red">
+<div class="w-screen h-screen">
 	<div class="navbar bg-base-100">
 		<div class="flex-1">
 			<a class="btn btn-ghost text-xl">FabricFusion</a>

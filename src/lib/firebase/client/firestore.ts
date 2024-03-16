@@ -21,5 +21,5 @@ const collectionRef = <T extends DocumentData>(collectionPath: string) =>
 
 export const firestore = {
 	ref: firestoreRef,
-	users: collectionRef<UserDoc>('users'),
+	users: collectionRef<UserDoc>('users')
 };

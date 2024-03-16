@@ -1,4 +1,5 @@
 import {
+	createUserWithEmailAndPassword,
 	// OAuthProvider,
 	signInWithEmailAndPassword,
 	// signInWithPopup,
@@ -38,4 +39,8 @@ async function signOut() {
 	goto('/');
 }
 
-export { signIn, signOut };
+async function signUp(email: string, password: string) {
+	await createUserWithEmailAndPassword(auth, email, password);
+}
+
+export { signIn, signOut, signUp };

@@ -1,5 +1,4 @@
-import type{Timestamp, DocumentReference,CollectionReference} from "firebase/firestore";
-
+import type { Timestamp, DocumentReference, CollectionReference } from 'firebase/firestore';
 
 type UserDoc = {
     dob : Timestamp;
@@ -14,24 +13,24 @@ type UserDoc = {
 };
 
 type ProjectDoc = {
-    title : string;
-    description : string;
-    active : boolean;
-    host : Array<DocumentReference>;
-    uploaded : Timestamp;
-    donatedobj : CollectionReference;
-    neededobj : CollectionReference;
+	title: string;
+	description: string;
+	active: boolean;
+	host: Array<DocumentReference>;
+	uploaded: Timestamp;
+	donatedobj: CollectionReference;
+	neededobj: CollectionReference;
 };
 
 type DonatedObjs = {
-    amount: Number;
-    name: string;
-    user: DocumentReference;
+	amount: Number;
+	name: string;
+	user: DocumentReference;
 };
 
 type NeededObjects = {
-    name: string;
-    amount: Number;
+	name: string;
+	amount: Number;
 };
 
 export type { UserDoc };

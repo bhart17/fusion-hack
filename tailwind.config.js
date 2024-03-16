@@ -2,7 +2,7 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {},
 	},
 	plugins: [require('daisyui')],
 	daisyui: {
@@ -26,7 +26,9 @@ export default {
 
 					warning: '#ff6400',
 
-					error: '#ff97ae'
+					error: '#ff97ae',
+
+					background: "#031c16"
 				}
 			}
 		]

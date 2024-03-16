@@ -4,7 +4,7 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-			user: import("firebase-admin/auth").DecodedIdToken | null;
+			user: import('firebase-admin/auth').DecodedIdToken | null;
 		}
 		// interface PageData {}
 		// interface Platform {}

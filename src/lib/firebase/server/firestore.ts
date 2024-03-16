@@ -2,7 +2,7 @@ import { app } from '$lib/firebase/server/app';
 import {
 	QueryDocumentSnapshot,
 	initializeFirestore,
-	type DocumentData,
+	type DocumentData
 } from 'firebase-admin/firestore';
 import type { UserData } from '$lib/firebase/types';
 
@@ -17,5 +17,5 @@ const collectionRef = <T extends DocumentData>(collectionPath: string) =>
 	firestoreRef.collection(collectionPath).withConverter(converter<T>());
 
 export const firestore = {
-	users: collectionRef<UserData>('users'),
+	users: collectionRef<UserData>('users')
 };

@@ -7,7 +7,7 @@ import {
 	Timestamp
 } from 'firebase/firestore';
 
-import type { UserDoc } from '$lib/firebase/types';
+import type { ProjectDoc, UserDoc } from '$lib/firebase/types';
 
 const firestoreRef = getFirestore(app);
 
@@ -21,5 +21,6 @@ const collectionRef = <T extends DocumentData>(collectionPath: string) =>
 
 export const firestore = {
 	ref: firestoreRef,
-	users: collectionRef<UserDoc>('users')
+	users: collectionRef<UserDoc>('users'),
+	projects: collectionRef<ProjectDoc>('projects')
 };

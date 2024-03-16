@@ -21,6 +21,7 @@ type ProjectDoc = {
 	uploaded: Timestamp;
 	donatedobj: CollectionReference;
 	neededobj: CollectionReference;
+	image: string;
 };
 
 type DonatedObjs = {
@@ -34,4 +35,4 @@ type NeededObjects = {
 	amount: Number;
 };
 
-export type { UserDoc };
+export type { UserDoc, ProjectDoc, DonatedObjs, NeededObjects };

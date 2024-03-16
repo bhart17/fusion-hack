@@ -1,0 +1,9 @@
+# Set text files to use Unix-style line endings
+* text eol=lf
+
+# Exclude binary files from line ending conversion
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.pdf binary

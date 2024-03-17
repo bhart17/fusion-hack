@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { signIn, signOut } from '$lib/firebase/login';
 	import { user, userData } from '$lib/firebase/client/auth';
 	export let data
@@ -67,7 +67,7 @@
 		</div>
 		<div class="divider divider-horizontal"></div>
 	{/each}
-	<a href="" class="btn btn-outline btn-success" style="margin-top: 9%">View all</a>
+	<a class="btn btn-outline btn-success" style="margin-top: 9%">View all</a>
 </div>
 <br />
-<br />
+<br /> -->

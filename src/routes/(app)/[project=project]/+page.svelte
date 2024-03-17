@@ -1,43 +1,53 @@
 <script lang="ts">
 	export let data;
+
+	import { user, userData } from '$lib/firebase/client/auth';
+	import { firestore } from '$lib/firebase/client/firestore';
+	import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
+
+	$: watching = $userData?.watching.includes(data.id);
+
+	async function watchProject() {
+		await updateDoc(doc(firestore.users, $user?.uid), { watching: arrayUnion(data.id) });
+	}
+
+	async function unwatchProject() {
+		await updateDoc(doc(firestore.users, $user?.uid), { watching: arrayRemove(data.id) });
+	}
 </script>
 
-<div class="justify-center flex" style="margin-top:20px;">
+<div class="flex flex-col items-center gap-4 py-4">
 	<div class="card card-compact w-3/6 bg-base-100 shadow-xl">
 		<figure>
-			<img src={data.image} alt="User photo" />
+			<img src={data.project?.image} alt="User" />
 		</figure>
 		<div class="card-body">
-			<div class="avatar">
+			<!-- <div class="avatar">
 				<div class="w-16 rounded-full">
-					<!-- <img src={data.avatar} /> -->
+					<img src={data.project.avatar} />
 				</div>
-			</div>
+			</div> -->
 			<p>Glen Chaplin, UK, posted on 16/03/2024 at 2:44am</p>
-			<h2 class="card-title text-4xl">{data.title}</h2>
-			<p class="text-xl">{data.description}</p>
+			<h2 class="card-title text-4xl">{data.project?.title}</h2>
+			<p class="text-xl">{data.project?.description}</p>
 		</div>
 	</div>
-</div>
-
-<p class="text-base justify-center flex" style="margin-top:20px;">
-	Supplies needed / already received
-</p>
-<div class="justify-center flex">
+	{#if watching}
+		<button class="btn w-fill" on:click={unwatchProject}>Unwatch</button>
+	{:else}
+		<button class="btn w-fill" on:click={watchProject}>Watch</button>
+	{/if}
+	<p class="text-center text-xl">Supplies needed / already received</p>
 	<div class="card w-3/6 bg-base-100 shadow-xl">
 		<div class="card-body text-xl">
 			<p>☐ Thread</p>
-			<br />
 			<p>🗹 Silk</p>
 		</div>
 	</div>
-</div>
-
-<p class="text-base justify-center flex" style="margin-top:20px;">Feed</p>
-<div class="justify-center flex">
+	<!-- <p class="text-center text-xl py-2">Feed</p>
+<div class="justify-center flex py-4">
 	<div
 		class="w-3/6 h-96 carousel carousel-vertical bg-base-100 rounded-box shadow-xl"
-		style="margin-bottom:20px;"
 	>
 		<div class="carousel-item h-96" style="margin-left:30px; margin-right:30px;">
 			&nbsp<br />
@@ -96,4 +106,5 @@
 			Testing
 		</div>
 	</div>
+</div> -->
 </div>

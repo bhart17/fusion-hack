@@ -2,73 +2,80 @@
 	import { goto } from '$app/navigation';
 	import { signIn, signOut } from '$lib/firebase/login';
 	import { user, userData } from '$lib/firebase/client/auth';
-	export let data
+	export let data;
 </script>
 
+<div class="flex flex-col p-4 gap-6">
+	<h1 class="text-3xl font-bold">Currently Watching</h1>
 
-<h1 class="text-3xl font-bold py-10">Currently Watching</h1>
-
-<div class="flex w-full">
-	{#if data.watching.length === 0}
-		<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">
-			<div class="card-body btn btn-ghost text-xl">
-				You are not currently watching any projects.
+	<div class="flex flex-col lg:flex-row items-center gap-2 w-full">
+		{#if data.watching.length === 0}
+			<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">
+				<div class="card-body btn btn-ghost text-xl">
+					You are not currently watching any projects.
+				</div>
 			</div>
-		</div>
-	{/if}
-	{#each data.watching as watchedProject}
-		<div class="card card-compact w-96 bg-base-100 shadow-xl">
-			<figure>
+		{/if}
+		{#each data.watching as watchedProject}
+		<div class="card card-compact w-96 bg-base-100 shadow-xl h-96">
+			<figure class="h-64">
+				{#if watchedProject.image === ''}
+					<img
+						src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
+						alt="Sustainable clothing logo"
+					/>
+				{/if}
 				<img src={watchedProject.image} alt="Sustainable clothing logo" />
 			</figure>
 			<div class="card-body">
 				<h2 class="card-title">{watchedProject.title}</h2>
 				<p>{watchedProject.description}</p>
 				<div class="card-actions justify-end">
-					<button class="btn btn-primary">View</button>
+					<a href={`/project-${watchedProject.id}`} class="btn btn-primary">View</a>
 				</div>
 			</div>
 		</div>
 		<div class="divider divider-horizontal"></div>
-	{/each}
-</div>
-<br />
-<br />
-<div class="nameContainer">
-	<h1 class="text-3xl font-bold">Your projects</h1>
-	<button class="btn btn-outline" on:click={()=> {goto('/newProject')}}>Create Project</button>
-</div>
-<br />
-<br />
-<div class="flex w-full">
-	{#if data.hosted.length === 0}
-		<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">
-			<div class="card-body btn btn-ghost text-xl">You do not currently have any projects.</div>
-		</div>
-	{/if}
-	{#each data.hosted.slice(0, 4) as hostedProject}
-		<div class="card card-compact w-96 bg-base-100 shadow-xl">
-			<figure class="h-64">
-				{#if hostedProject.image === ''}
-					<img
-						src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
-						alt="Sustainable clothing logo"
-					/>
-				{/if}
-				<img src={hostedProject.image} 
-				     alt="Sustainable clothing logo" />
-			</figure>
-			<div class="card-body">
-				<h2 class="card-title">{hostedProject.title}</h2>
-				<p>{hostedProject.description}</p>
-				<div class="card-actions justify-end">
-					<a href={`/project-${hostedProject.id}`} class="btn btn-primary">View</a>
+		{/each}
+	</div>
+
+	<div class="flex gap-4 items-center">
+		<h1 class="text-3xl font-bold">Your Projects</h1>
+		<button
+			class="btn btn-outline"
+			on:click={() => {
+				goto('/newProject');
+			}}>Create Project</button
+		>
+	</div>
+
+	<div class="flex flex-col lg:flex-row items-center gap-2 w-full">
+		{#if data.hosted.length === 0}
+			<div class="card card-compact w-96 bg-base-100 shadow-xl h-96">
+				<div class="card-body btn btn-ghost text-xl">You do not currently have any projects.</div>
+			</div>
+		{/if}
+		{#each data.hosted.slice(0, 4) as hostedProject}
+			<div class="card card-compact w-96 bg-base-100 shadow-xl h-96">
+				<figure class="h-64">
+					{#if hostedProject.image === ''}
+						<img
+							src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
+							alt="Sustainable clothing logo"
+						/>
+					{/if}
+					<img src={hostedProject.image} alt="Sustainable clothing logo" />
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">{hostedProject.title}</h2>
+					<p>{hostedProject.description}</p>
+					<div class="card-actions justify-end">
+						<a href={`/project-${hostedProject.id}`} class="btn btn-primary">View</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="divider divider-horizontal"></div>
-	{/each}
-	<a href="\display" class="btn btn-outline btn-success" style="margin-top: 9%">View all</a>
+			<div class="divider divider-horizontal"></div>
+		{/each}
+		<a href="\display" class="btn btn-outline btn-success">View all</a>
+	</div>
 </div>
-<br />
-<br />

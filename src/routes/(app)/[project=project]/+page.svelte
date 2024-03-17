@@ -88,35 +88,9 @@
 </div>
 
 
-<div id="modal" class="card w-96 bg-base-100 shadow-xl" >
-	<a href="#">CLose x</a>
-	<figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-	<div class="card-body">
-	  <h2 class="card-title">Shoes!</h2>
-	  <p>If a dog chews shoes whose shoes does he choose?</p>
-	  <div class="card-actions justify-end">
-		<button class="btn btn-primary">Buy Now</button>
-	  </div>
-	</div>
-</div>
 
 <style>
-	#modal {
-	display: none;
-  	position: fixed;
-	top: 200px;
-	left: 575px;
-	align-items:center;
-	justify-content:center;
-	width: 40%;
-	display:flex;
-  	border: 3px solid #f1f1f1;
-  	z-index: 999;
-	}
 
-	#modal:target {
-  	display: block;
-	}
 </style>
 
 

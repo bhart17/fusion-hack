@@ -9,8 +9,10 @@ export const load = (async ({ params }) => {
 		hosted: { title: string; description: string; image: string }[];
 	} = { watching: [], hosted: [] };
 
-	const userQuery = 
-		await firestore.users.where('username', '==', params.profile.substring(1)).limit(1).get();
+	const userQuery = await firestore.users
+		.where('username', '==', params.profile.substring(1))
+		.limit(1)
+		.get();
 
 	if (userQuery.empty) error(404);
 

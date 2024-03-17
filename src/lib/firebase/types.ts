@@ -19,19 +19,8 @@ type ProjectDoc = {
 	active: boolean;
 	host: string;
 	uploaded: number;
-	items: { name: string; amount: number; needed: boolean }[];
+	items: { name: string; amount: number; have: number }[];
 	image: string;
 };
 
-type DonatedObjs = {
-	amount: number;
-	name: string;
-	user: string;
-};
-
-type NeededObjects = {
-	name: string;
-	amount: number;
-};
-
-export type { UserDoc, ProjectDoc, DonatedObjs, NeededObjects };
+export type { UserDoc, ProjectDoc };

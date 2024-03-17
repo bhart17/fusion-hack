@@ -18,11 +18,16 @@
 				<figure class="h-64">
 					{#if hostedProject.project.image === ''}
 						<img
-							src='https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'
+							src="https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg"
 							alt="Sustainable clothing logo"
+							class="w-full object-cover"
 						/>
 					{:else}
-						<img src={hostedProject.project.image} alt="Sustainable clothing logo" />
+						<img
+							src={hostedProject.project.image}
+							alt="Sustainable clothing logo"
+							class="w-full object-cover"
+						/>
 					{/if}
 				</figure>
 				<div class="card-body">

@@ -157,8 +157,10 @@
 					type="file"
 					class="hidden"
 				/>
-				<button class="btn" on:click={confirmUser} disabled={(!isAvailable && !uploading) || !newUser.name.length}
-					>Submit</button
+				<button
+					class="btn"
+					on:click={confirmUser}
+					disabled={(!isAvailable && !uploading) || !newUser.name.length}>Submit</button
 				>
 			</form>
 		{/if}

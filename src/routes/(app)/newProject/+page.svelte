@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { signIn, signOut } from '$lib/firebase/login';
-	import { user, userData } from '$lib/firebase/client/auth';
+	import { user } from '$lib/firebase/client/auth';
 	import { firestore } from '$lib/firebase/client/firestore';
 	import { arrayUnion, doc, setDoc, updateDoc } from 'firebase/firestore';
 	import { goto } from '$app/navigation';
@@ -13,7 +12,7 @@
 		image: '',
 		title: '',
 		uploaded: 0,
-		items: [{ name: '', amount: 0, needed: true }]
+		items: [{ name: '', amount: 0, have: 0 }]
 	};
 
 	async function uploadProject() {
@@ -104,7 +103,7 @@
 					id="addItemButton"
 					class="btn"
 					on:click={() => {
-						newProject.items.push({ name: '', amount: 0, needed: true });
+						newProject.items.push({ name: '', amount: 0, have: 0 });
 						newProject.items = newProject.items;
 					}}>+</button
 				>

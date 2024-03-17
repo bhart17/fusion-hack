@@ -7,6 +7,7 @@
 	import { goto } from '$app/navigation';
 
 	$: watching = $userData?.watching.includes(data.id);
+	$: owned = $userData?.hostprojects.includes(data.id);
 
 	async function watchProject() {
 		await updateDoc(doc(firestore.users, $user?.uid), { watching: arrayUnion(data.id) });
@@ -16,9 +17,18 @@
 		await updateDoc(doc(firestore.users, $user?.uid), { watching: arrayRemove(data.id) });
 	}
 
-	let donatingItems = data.project?.items.map((item) => ({name: item.name, amount: 0})) ?? [];
+	let donatingItems = data.project?.items.map((item) => ({ name: item.name, amount: 0 })) ?? [];
 
-	async function donate() {}
+	async function donate() {
+		await updateDoc(doc(firestore.projects, data.id), {
+			items: data.project?.items.map((item, i) => ({
+				...item,
+				have: item.have + donatingItems[i].amount
+			}))
+		});
+		await updateDoc(doc(firestore.users, $user?.uid), { donatedprojects: arrayUnion(data.id) });
+		goto(`/project-${data.id}/thanks`);
+	}
 </script>
 
 <svelte:head>
@@ -31,7 +41,7 @@
 		<figure>
 			{#if data.project?.image === ''}
 				<img
-					src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
+					src='https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'
 					alt="Sustainable clothing logo"
 					class="max-h-96 w-full object-cover"
 				/>
@@ -66,33 +76,26 @@
 	<div class="card bg-base-100 shadow-xl max-w-xl w-full">
 		<div class="overflow-x-auto">
 			<table class="table">
-				<!-- head -->
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>Amount</th>
-						<th>Needed</th>
+						<th>Have</th>
 					</tr>
 				</thead>
 				<tbody>
-					<!-- row  -->
 					{#each data.project?.items ?? [] as item}
 						<tr>
 							<td>{item.name}</td>
 							<td>{item.amount}</td>
-							<td>
-								{#if item.needed}
-									<input type="checkbox" class="checkbox" disabled checked />
-								{:else}
-									<input type="checkbox" class="checkbox" disabled />
-								{/if}
-							</td>
+							<td>{item.have}</td>
 						</tr>
 					{/each}
 				</tbody>
 			</table>
 		</div>
 	</div>
+	{#if !owned}
 	<p class="text-center text-xl">Donate</p>
 	<div class="card bg-base-100 shadow-xl max-w-xl w-full">
 		<div class="overflow-x-auto">
@@ -106,16 +109,29 @@
 				</thead>
 				<tbody>
 					<!-- row  -->
-					{#each donatingItems as item}
+					{#each donatingItems as item, index}
 						<tr>
 							<td>{item.name}</td>
-							<td><input class="input w-full" type="number" bind:value={item.amount} /></td>
+							<td
+								><input
+									class="input w-full"
+									type="number"
+									min="0"
+									max={(data.project?.items[index].amount ?? 0) -
+										(data.project?.items[index].have ?? 0)}
+									bind:value={item.amount}
+								/></td
+							>
 						</tr>
 					{/each}
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<button class="btn max-w-xl w-full" disabled>Submit Donation</button>
-
+	<button
+		class="btn max-w-xl w-full"
+		on:click={donate}
+		disabled={!donatingItems.reduce((total, item) => total + item.amount, 0)}
+		>Submit Donation</button
+	>{/if}
 </div>

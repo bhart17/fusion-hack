@@ -20,34 +20,24 @@
 		<a class="btn btn-ghost text-xl">FabricFusion</a>
 	</div>
 	<div class="flex-none">
-		<!-- <ul class="menu menu-horizontal px-1">
-			<li><a href="\login">Log In</a></li>
-			<li>
-				<details>
-					<summary> Parent </summary>
-					<ul class="p-2 bg-base-100 rounded-t-none">
-						<li><a>Link 1</a></li>
-						<li><a>Link 2</a></li>
-					</ul>
-				</details>
-			</li>
-		</ul> -->
+		<ul class="menu menu-horizontal px-1">
+			<li>current user: {$user?.email}
+				<button
+					class="btn"
+					on:click={() => {
+						signIn('user@test.com', 'password');
+					}}>Login</button
+				>
+				<button class="btn" on:click={signOut}>Logout</button></li>
+		</ul>
 	</div>
 </div>
 
-current user: {$user?.email}
-<button
-	class="btn"
-	on:click={() => {
-		signIn('user@test.com', 'password');
-	}}>Login</button
->
-<button class="btn" on:click={signOut}>Logout</button>
-
-<button>
-	<a href="/login">Go to login page</a>
-</button>
+<br>
+<br>
 <h1 class="text-3xl font-bold">Currently Watching</h1>
+<br>
+<br>
 <div class="flex w-full">
 	{#if data.watching.length === 0}
 	<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">
@@ -136,15 +126,26 @@ current user: {$user?.email}
 		</div>
 	</div> -->
 </div>
-
-<button>
-	<a href="/login">Go to login page</a>
-</button>
+<br>
+<br>
 <h1 class="text-3xl font-bold">Your projects</h1>
+<br>
+<br>
 <div class="flex w-full">
+	{#if data.hosted.length === 0}
+	<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">
+		  <div class="card-body">You do not currently have any projects.</div>
+	  </div>
+	{/if}
 	{#each data.hosted as hostedProject}
 	<div class="card card-compact w-96 bg-base-100 shadow-xl">
 		<figure>
+			{#if hostedProject.image === ""}
+			<img
+			src={"https://media.istockphoto.com/id/1283569480/vector/recycling-environment-label-with-on-white-background.jpg?s=612x612&w=0&k=20&c=8LhkYEW6wrXjPHLJ7xxu1-DdospS-0jhAo-YeRrlNk4="}
+			alt="Sustainable clothing logo"
+			/>
+			{/if}
 			<img
 				src={hostedProject.image}
 				alt="Sustainable clothing logo"
@@ -161,3 +162,5 @@ current user: {$user?.email}
 	<div class="divider divider-horizontal"></div>
 	{/each}
 	</div>
+	<br>
+	<br>

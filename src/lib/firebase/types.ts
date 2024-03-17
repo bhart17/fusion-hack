@@ -7,8 +7,8 @@ type UserDoc = {
 	name: string;
 	username: string;
 	hostprojects: Array<DocumentReference>;
-	followers: Array<DocumentReference>;
-	following: Array<DocumentReference>;
+	followers: Array<string>;
+	following: Array<string>;
 	image: string;
     watching: Array<DocumentReference>;
 };

@@ -18,7 +18,7 @@
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
-      <li><a href = "\login">Log In</a></li>
+      <li><a href = "\profile">Profile</a></li>
       <li>
         <details>
           <summary>

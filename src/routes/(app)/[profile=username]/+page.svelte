@@ -75,4 +75,6 @@
 			<div class="stat-value">{data.user.donatedprojects.length}</div>
 		</div>
 	</div>
+	<h2 class="text-2xl font-bold">About me</h2>
+	<p>{data.user.bio}</p>
 </div>

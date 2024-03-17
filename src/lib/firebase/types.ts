@@ -10,6 +10,7 @@ type UserDoc = {
 	following: Array<string>;
 	image: string;
 	watching: Array<string>;
+	bio: string;
 };
 
 type ProjectDoc = {

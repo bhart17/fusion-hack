@@ -16,7 +16,7 @@
 		await updateDoc(doc(firestore.users, $user?.uid), { watching: arrayRemove(data.id) });
 	}
 
-	let donatingItems = data.project?.items.map((item) => ({name: item.name, amount: 0}));
+	let donatingItems = data.project?.items.map((item) => ({name: item.name, amount: 0})) ?? [];
 
 	async function donate() {}
 </script>
@@ -116,6 +116,6 @@
 			</table>
 		</div>
 	</div>
-	<button class="btn max-w-xl w-full">Submit Donation</button>
+	<button class="btn max-w-xl w-full" disabled>Submit Donation</button>
 
 </div>

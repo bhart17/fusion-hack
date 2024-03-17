@@ -25,7 +25,8 @@
 		hostprojects: [],
 		followers: [],
 		following: [],
-		image: ''
+		image: '',
+		bio: ''
 	};
 
 	$: newUser.email = $user?.email ?? '';
@@ -131,6 +132,9 @@
 				<label class="input input-bordered flex items-center gap-2">
 					<input bind:value={newUser.name} type="text" class="grow" placeholder="Name" />
 				</label>
+				<label class="flex items-center gap-2">
+					<textarea bind:value={newUser.bio} class="grow textarea" placeholder="Bio" />
+				</label>
 				<label for="profilePhoto" class="flex flex-col"
 					><div class="flex gap-2">Profile Photo</div>
 					<div
@@ -153,7 +157,7 @@
 					type="file"
 					class="hidden"
 				/>
-				<button class="btn" on:click={confirmUser} disabled={!isAvailable && !uploading}
+				<button class="btn" on:click={confirmUser} disabled={(!isAvailable && !uploading) || !newUser.name.length}
 					>Submit</button
 				>
 			</form>

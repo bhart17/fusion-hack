@@ -25,88 +25,45 @@
 	}
 </script>
 
-<div class="profilebar">
-	<div class="avatar">
-		<div class="w-48 h-48 rounded-full">
-			<img src={data.user.image} alt="Profile Photo"/>
+<div class="flex flex-col gap-4 p-4">
+	<div class="flex items-center gap-4">
+		<div class="avatar">
+			<div class="w-48 h-48 rounded-full">
+				<img src={data.user.image} alt="Profile" />
+			</div>
+		</div>
+		<div class="flex flex-col">
+			<div class="flex flex-col gap-2">
+				<h2 class="text-4xl font-bold">{data.user.name}</h2>
+				<h2 class="text-2xl">@{data.user.username}</h2>
+				{#if ownPage}
+					<button class="btn btn-outline">Edit Profile</button>
+				{:else if isFollowing}
+					<button class="btn btn-outline" on:click={handleUnfollow}>Unfollow</button>
+				{:else}
+					<button class="btn btn-outline" on:click={handleFollow}>Follow</button>
+				{/if}
+			</div>
 		</div>
 	</div>
-	<div class="nameAndStats">
-		<div class="nameContainer">
-			<h2 class="name">{data.user.name}</h2>
-			{#if ownPage}
-				<button class="btn btn-outline">Edit Profile</button>
-			{:else if isFollowing}
-				<button class="btn btn-outline" on:click={handleUnfollow}>Unfollow</button>
-			{:else}
-				<button class="btn btn-outline" on:click={handleFollow}>Follow</button>
-			{/if}
+	<div class="stats shadow">
+		<div class="stat place-items-center">
+			<div class="stat-title">Followers</div>
+			<div class="stat-value">{followerCount}</div>
 		</div>
-		<div class="stats">
-			<div class="stat">
-				<p class="number">{followerCount}</p>
-				<p class="label">Followers</p>
-			</div>
-			<div class="stat">
-				<p class="number">{followCount}</p>
-				<p class="label">Following</p>
-			</div>
-			<div class="stat">
-				<p class="number">{data.user.hostprojects.length}</p>
-				<p class="label">Projects</p>
-			</div>
-			<div class="stat">
-				<p class="number">{data.user.donatedprojects.length}</p>
-				<p class="label">Donations</p>
-			</div>
+
+		<div class="stat place-items-center">
+			<div class="stat-title">Following</div>
+			<div class="stat-value">{followCount}</div>
+		</div>
+
+		<div class="stat place-items-center">
+			<div class="stat-title">Projects</div>
+			<div class="stat-value">{data.user.hostprojects.length}</div>
+		</div>
+		<div class="stat place-items-center">
+			<div class="stat-title">Donations</div>
+			<div class="stat-value">{data.user.donatedprojects.length}</div>
 		</div>
 	</div>
 </div>
-
-
-
-<style>
-	.profilebar {
-		display: flex;
-		align-items: center;
-		padding: 10px;
-		border-bottom: 1px solid white;
-	}
-
-	.avatar {
-		margin-right: 20px;
-	}
-
-	.nameAndStats {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.nameContainer {
-		display: flex;
-		align-items: center;
-	}
-
-	.name {
-		font-size: 48px; /* Bigger name */
-		color: #ffffff; /* White text */
-		margin-bottom: 10px;
-		padding: 0 20px 0 0;
-	}
-
-	.stats {
-		display: flex;
-	}
-
-	.number {
-		color: white; /* Light green */
-		font-size: 24px; /* Adjusted size */
-		text-align: center;
-	}
-
-	.label {
-		color: white; /* Light green */
-		font-size: 18px; /* Adjusted size */
-		text-align: center;
-	}
-</style>

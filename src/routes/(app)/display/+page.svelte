@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { signIn, signOut } from '$lib/firebase/login';
 	import { user, userData } from '$lib/firebase/client/auth';
 	export let data
@@ -36,7 +35,7 @@
 <br />
 <div class="nameContainer">
 	<h1 class="text-3xl font-bold">Your projects</h1>
-	<button class="btn btn-outline" on:click={()=> {goto('/newProject')}}>Create Project</button>
+	<button class="btn btn-outline">Create Project</button>
 </div>
 <br />
 <br />
@@ -68,7 +67,7 @@
 		</div>
 		<div class="divider divider-horizontal"></div>
 	{/each}
-	<a href="\display" class="btn btn-outline btn-success" style="margin-top: 9%">View all</a>
+	<a href="" class="btn btn-outline btn-success" style="margin-top: 9%">View all</a>
 </div>
 <br />
 <br />

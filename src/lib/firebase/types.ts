@@ -9,7 +9,7 @@ type UserDoc = {
 	followers: Array<string>;
 	following: Array<string>;
 	image: string;
-    watching: Array<string>;
+	watching: Array<string>;
 };
 
 type ProjectDoc = {

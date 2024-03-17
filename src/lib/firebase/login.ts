@@ -10,6 +10,9 @@ import {
 import { auth, user } from '$lib/firebase/client/auth';
 // import { doc, getDoc } from 'firebase/firestore';
 import { goto } from '$app/navigation';
+import { doc, getDoc } from 'firebase/firestore';
+import { get } from 'svelte/store';
+import { firestore } from '$lib/firebase/client/firestore';
 
 // import { get } from 'svelte/store';
 
@@ -27,10 +30,10 @@ async function signIn(email: string, password: string) {
 		body: JSON.stringify({ idToken })
 	});
 
-	// if (res.ok) {
-	// 	const snap = await getDoc(doc(firestore.users, get(user)?.uid ?? ''));
-	// 	if (!snap.exists()) goto('/signup');
-	// }
+	if (res.ok) {
+		const snap = await getDoc(doc(firestore.users, get(user)?.uid ?? ''));
+		if (!snap.exists()) goto('/signup');
+	}
 }
 
 async function signOut() {

@@ -35,10 +35,12 @@
 	let emailInput = '';
 	let passwordInput = '';
 
-	$: validAccount = emailInput.toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    ) && passwordInput.length >= 8;
+	$: validAccount =
+		emailInput
+			.toLowerCase()
+			.match(
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			) && passwordInput.length >= 8;
 
 	let loading = false;
 	let isAvailable = false;
@@ -157,7 +159,9 @@
 					type="file"
 					class="hidden"
 				/>
-				<button class="btn" on:click={confirmUser} disabled={!isAvailable && !uploading}>Submit</button>
+				<button class="btn" on:click={confirmUser} disabled={!isAvailable && !uploading}
+					>Submit</button
+				>
 			</form>
 		{/if}
 	{:else}
@@ -190,7 +194,11 @@
 				>
 				<input bind:value={passwordInput} type="password" class="grow" placeholder="Password" />
 			</label>
-			<button class="btn" on:click={() => signUp(emailInput, passwordInput)} disabled={!validAccount}>Submit</button>
+			<button
+				class="btn"
+				on:click={() => signUp(emailInput, passwordInput)}
+				disabled={!validAccount}>Submit</button
+			>
 		</form>
 	{/if}
 </div>

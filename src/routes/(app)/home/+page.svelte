@@ -41,7 +41,7 @@
 <div class="flex w-full">
 	{#if data.watching.length === 0}
 	<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">
-		  <div class="card-body">You are not currently watching any projects.</div> 
+		  <div class="card-body btn btn-ghost text-xl">You are not currently watching any projects.</div> 
 	  </div>
 	{/if}
 	{#each data.watching as watchedProject}
@@ -62,6 +62,8 @@
 	</div>
 	<div class="divider divider-horizontal"></div>
 	{/each}
+
+
 	<!-- <div class="card card-compact w-96 bg-base-100 shadow-xl">
 		<figure>
 			<img
@@ -134,10 +136,10 @@
 <div class="flex w-full">
 	{#if data.hosted.length === 0}
 	<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">
-		  <div class="card-body">You do not currently have any projects.</div>
+		  <div class="card-body btn btn-ghost text-xl">You do not currently have any projects.</div>
 	  </div>
 	{/if}
-	{#each data.hosted as hostedProject}
+	{#each data.hosted.slice(0, 4) as hostedProject}
 	<div class="card card-compact w-96 bg-base-100 shadow-xl">
 		<figure>
 			{#if hostedProject.image === ""}

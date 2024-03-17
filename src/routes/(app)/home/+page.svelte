@@ -25,7 +25,7 @@
 				<figure class="h-64">
 					{#if watchedProject.image === ''}
 						<img
-							src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
+							src='https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'
 							alt="Sustainable clothing logo"
 							class="w-full object-cover"
 						/>
@@ -66,7 +66,7 @@
 				<figure class="h-64">
 					{#if hostedProject.image === ''}
 						<img
-							src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
+							src='https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'
 							alt="Sustainable clothing logo"
 							class="w-full object-cover"
 						/>
@@ -84,6 +84,7 @@
 			</div>
 			<!-- <div class="divider divider-horizontal"></div> -->
 		{/each}
-		<a href="\display" class="btn btn-outline btn-success">View all</a>
+		<a href="\display" class="btn btn-outline btn-success h-96">View all</a>
 	</div>
+	<a href="/all" class="btn btn-outline btn-success">Browse all projects</a>
 </div>

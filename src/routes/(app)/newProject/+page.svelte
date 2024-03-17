@@ -46,8 +46,8 @@
 	<meta name="description" content="New Project" />
 </svelte:head>
 
-<div class="createProjectContainer justify-center flex py-4">
-	<div class="card w-96 bg-base-100 shadow-xl">
+<div class="justify-center flex py-4">
+	<div class="card w-full max-w-xl bg-base-100 shadow-xl">
 		<figure>
 			{#if previewURL}<img src={previewURL} alt="Project" />{:else}<img
 					src="./placeholder.svg"
@@ -70,22 +70,22 @@
 				<input
 					type="text"
 					placeholder="project title"
-					class="input input-bordered w-full max-w-xs"
+					class="input input-bordered w-full"
 					bind:value={newProject.title}
 				/>
 			</div>
-			<div class="prompt">
+			<div>
 				<h2 class="label">Description</h2>
 				<textarea
-					class="textarea textarea-bordered"
+					class="textarea textarea-bordered w-full"
 					placeholder="description"
 					bind:value={newProject.description}
 				></textarea>
 			</div>
-			<form class="prompt">
+			<form class="flex flex-col gap-2" on:submit|preventDefault>
 				<h2 class="label">Items</h2>
 				{#each newProject.items as item}
-					<div class="itemcontainer flex">
+					<div class="flex gap-2">
 						<input
 							type="text"
 							placeholder="Item"

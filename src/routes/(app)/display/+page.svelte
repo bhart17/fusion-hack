@@ -7,7 +7,7 @@
 <br />
 <br />
 <div class="nameContainer">
-	<h1 class="text-3xl font-bold">Your projects</h1>
+	<h1 class="text-3xl font-bold">Projects</h1>
 </div>
 <br />
 <br />

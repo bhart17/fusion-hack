@@ -1,41 +1,13 @@
-<!-- <script lang="ts">
+<script lang="ts">
 	import { signIn, signOut } from '$lib/firebase/login';
 	import { user, userData } from '$lib/firebase/client/auth';
 	export let data
 </script>
 
-
-<h1 class="text-3xl font-bold py-10">Currently Watching</h1>
-
-<div class="flex w-full">
-	{#if data.watching.length === 0}
-		<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">
-			<div class="card-body btn btn-ghost text-xl">
-				You are not currently watching any projects.
-			</div>
-		</div>
-	{/if}
-	{#each data.watching as watchedProject}
-		<div class="card card-compact w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img src={watchedProject.image} alt="Sustainable clothing logo" />
-			</figure>
-			<div class="card-body">
-				<h2 class="card-title">{watchedProject.title}</h2>
-				<p>{watchedProject.description}</p>
-				<div class="card-actions justify-end">
-					<button class="btn btn-primary">View</button>
-				</div>
-			</div>
-		</div>
-		<div class="divider divider-horizontal"></div>
-	{/each}
-</div>
 <br />
 <br />
 <div class="nameContainer">
 	<h1 class="text-3xl font-bold">Your projects</h1>
-	<button class="btn btn-outline">Create Project</button>
 </div>
 <br />
 <br />
@@ -45,7 +17,7 @@
 			<div class="card-body btn btn-ghost text-xl">You do not currently have any projects.</div>
 		</div>
 	{/if}
-	{#each data.hosted.slice(0, 4) as hostedProject}
+	{#each data.hosted as hostedProject}
 		<div class="card card-compact w-96 bg-base-100 shadow-xl">
 			<figure class="h-64">
 				{#if hostedProject.image === ''}
@@ -67,7 +39,6 @@
 		</div>
 		<div class="divider divider-horizontal"></div>
 	{/each}
-	<a class="btn btn-outline btn-success" style="margin-top: 9%">View all</a>
 </div>
 <br />
-<br /> -->
+<br />

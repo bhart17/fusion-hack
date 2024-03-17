@@ -4,15 +4,6 @@
 	export let data
 </script>
 
-
-<label class="swap swap-flip text-9xl">
-  
-	<!-- this hidden checkbox controls the state -->
-	<input type="checkbox" />
-	<div class="swap-on"><img src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvam9iNjAyLTAyLXAucG5n.png" alt="star"></div>
-	<div class="swap-off">😇</div>
-  </label>
-
 <br />
 <br />
 <h1 class="text-3xl font-bold">Currently Watching</h1>

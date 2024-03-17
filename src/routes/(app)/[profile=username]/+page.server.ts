@@ -8,7 +8,7 @@ export const load = (async ({ params }) => {
 		hosted: { title: string; description: string; image: string }[];
 	} = { watching: [], hosted: [] };
 
-	const userDoc = (await firestore.users.where('username', '==', params.profile).limit(1).get())
+	const userDoc = (await firestore.users.where('username', '==', params.profile.substring(1)).limit(1).get())
 		.docs[0];
 	const user = userDoc.data();
 

@@ -25,22 +25,10 @@
 	}
 </script>
 
-<div class="navbar bg-base-100">
-	<div class="flex-1">
-		<a href="/home" class="btn btn-ghost text-xl">FabricFusion</a>
-	</div>
-	<div class="flex-none">
-		<ul class="menu menu-horizontal px-1">
-			<li><a href={`/${$userData?.username}`}>Profile</a></li>
-			<button  on:click={signOut}>Logout</button>
-		</ul>
-	</div>
-</div>
-
 <div class="profilebar">
 	<div class="avatar">
 		<div class="w-48 h-48 rounded-full">
-			<img src={data.user.image} />
+			<img src={data.user.image} alt="Profile Photo"/>
 		</div>
 	</div>
 	<div class="nameAndStats">

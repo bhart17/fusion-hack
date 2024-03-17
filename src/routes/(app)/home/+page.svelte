@@ -4,17 +4,6 @@
 	export let data
 </script>
 
-<div class="navbar bg-base-100">
-	<div class="flex-1">
-		<a class="btn btn-ghost text-xl">FabricFusion</a>
-	</div>
-	<div class="flex-none">
-		<ul class="menu menu-horizontal px-1">
-			<li><a href={`/${$userData?.username}`}>Profile</a></li>
-			<button  on:click={signOut}>Logout</button>
-		</ul>
-	</div>
-</div>
 
 <label class="swap swap-flip text-9xl">
   
@@ -52,70 +41,6 @@
 		</div>
 		<div class="divider divider-horizontal"></div>
 	{/each}
-
-	<!-- <div class="card card-compact w-96 bg-base-100 shadow-xl">
-		<figure>
-			<img
-				src="https://www.akeneo.com/wp-content/uploads/2023/09/AdobeStock_589899369-scaled.jpeg"
-				alt="Sustainable clothing logo"
-			/>
-		</figure>
-		<div class="card-body">
-			<h2 class="card-title">Project: Insert project title</h2>
-			<p>Project description</p>
-			<div class="card-actions justify-end">
-				<button class="btn btn-primary">View</button>
-			</div>
-		</div>
-	</div>
-	<div class="divider divider-horizontal"></div>
-	<div class="card card-compact w-96 bg-base-100 shadow-xl">
-		<figure>
-			<img
-				src="https://www.akeneo.com/wp-content/uploads/2023/09/AdobeStock_589899369-scaled.jpeg"
-				alt="Sustainable clothing logo"
-			/>
-		</figure>
-		<div class="card-body">
-			<h2 class="card-title">Project: Insert project title</h2>
-			<p>Project description</p>
-			<div class="card-actions justify-end">
-				<button class="btn btn-primary">View</button>
-			</div>
-		</div>
-	</div>
-	<div class="divider divider-horizontal"></div>
-	<div class="card card-compact w-96 bg-base-100 shadow-xl">
-		<figure>
-			<img
-				src="https://www.akeneo.com/wp-content/uploads/2023/09/AdobeStock_589899369-scaled.jpeg"
-				alt="Sustainable clothing logo"
-			/>
-		</figure>
-		<div class="card-body">
-			<h2 class="card-title">Project: Insert project title</h2>
-			<p>Project description</p>
-			<div class="card-actions justify-end">
-				<button class="btn btn-primary">View</button>
-			</div>
-		</div>
-	</div>
-	<div class="divider divider-horizontal"></div>
-	<div class="card card-compact w-96 bg-base-100 shadow-xl">
-		<figure>
-			<img
-				src="https://www.akeneo.com/wp-content/uploads/2023/09/AdobeStock_589899369-scaled.jpeg"
-				alt="Sustainable clothing logo"
-			/>
-		</figure>
-		<div class="card-body">
-			<h2 class="card-title">Project: Insert project title</h2>
-			<p>Project description</p>
-			<div class="card-actions justify-end">
-				<button class="btn btn-primary">View</button>
-			</div>
-		</div>
-	</div> -->
 </div>
 <br />
 <br />

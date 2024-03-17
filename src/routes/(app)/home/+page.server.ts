@@ -9,11 +9,11 @@ export const load = (async ({ locals }) => {
     // console.log(userDoc)
     for(const hostedProject of userDoc?.hostprojects ?? []) {
         console.log();
-        const project = (await firestore.projects.doc(String(hostedProject)).get()).data() as ProjectDoc;
+        const project = (await firestore.projects.doc(hostedProject).get()).data() as ProjectDoc;
         projects.hosted.push({ title: project.title, description: project.description, image: project.image});
     }
     for(const watchingProject of userDoc?.watching ?? []) {
-        const project = (await firestore.projects.doc(String(watchingProject)).get()).data() as ProjectDoc;
+        const project = (await firestore.projects.doc(watchingProject).get()).data() as ProjectDoc;
         projects.watching.push(project);
     }
     // console.log(projects);

@@ -7,7 +7,6 @@
 		getCountFromServer,
 		limit,
 		query,
-		serverTimestamp,
 		setDoc,
 		Timestamp,
 		where
@@ -18,7 +17,6 @@
 	import { uploadFile } from '$lib/firebase/client/storage';
 
 	let newUser: UserDoc = {
-		dob: new Timestamp(0, 0),
 		donatedprojects: [],
 		watching: [],
 		email: '',
@@ -36,6 +34,11 @@
 
 	let emailInput = '';
 	let passwordInput = '';
+
+	$: validAccount = emailInput.toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    ) && passwordInput.length >= 8;
 
 	let loading = false;
 	let isAvailable = false;
@@ -187,7 +190,7 @@
 				>
 				<input bind:value={passwordInput} type="password" class="grow" placeholder="Password" />
 			</label>
-			<button class="btn" on:click={() => signUp(emailInput, passwordInput)}>Submit</button>
+			<button class="btn" on:click={() => signUp(emailInput, passwordInput)} disabled={!validAccount}>Submit</button>
 		</form>
 	{/if}
 </div>

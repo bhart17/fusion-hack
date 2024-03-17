@@ -4,7 +4,7 @@ import { firestore } from '$lib/firebase/server/firestore';
 
 export const load = (async ({ locals }) => {
 	const projects: {
-		watching: { title: string; description: string; image: string }[];
+		watching: { title: string; description: string; image: string; id: string }[];
 		hosted: { title: string; description: string; image: string; id: string }[];
 	} = { watching: [], hosted: [] };
 	if (!locals.user) return projects;
@@ -22,7 +22,12 @@ export const load = (async ({ locals }) => {
 	}
 	for (const watchingProject of userDoc?.watching ?? []) {
 		const project = (await firestore.projects.doc(watchingProject).get()).data() as ProjectDoc;
-		projects.watching.push(project);
+		projects.watching.push({
+			id: watchingProject,
+			title: project.title,
+			description: project.description,
+			image: project.image
+		});
 	}
 
 	// console.log(projects);

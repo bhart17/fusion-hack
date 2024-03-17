@@ -4,11 +4,9 @@
 	export let data
 </script>
 
-<br />
-<br />
-<h1 class="text-3xl font-bold">Currently Watching</h1>
-<br />
-<br />
+
+<h1 class="text-3xl font-bold py-10">Currently Watching</h1>
+
 <div class="flex w-full">
 	{#if data.watching.length === 0}
 		<div class="card card-compact w-96 bg-base-100 shadow-xl" style="height: 300px;">

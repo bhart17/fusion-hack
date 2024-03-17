@@ -23,7 +23,11 @@ export const load = (async ({ locals }) => {
 		const project = (await firestore.projects.doc(watchingProject).get()).data() as ProjectDoc;
 		projects.watching.push(project);
 	}
+
 	// console.log(projects);
 	// await firestore.projects.get();
 	return projects;
 }) satisfies PageServerLoad;
+
+
+

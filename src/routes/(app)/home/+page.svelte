@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { signIn, signOut } from '$lib/firebase/login';
-	import { user } from '$lib/firebase/client/auth';
+	import { user, userData } from '$lib/firebase/client/auth';
 	export let data: {
 		watching: {
 			title: string;
@@ -21,16 +21,8 @@
 	</div>
 	<div class="flex-none">
 		<ul class="menu menu-horizontal px-1">
-			<li>
-				current user: {$user?.email}
-				<button
-					class="btn"
-					on:click={() => {
-						signIn('user@test.com', 'password');
-					}}>Login</button
-				>
-				<button class="btn" on:click={signOut}>Logout</button>
-			</li>
+			<li><a href={`/${$userData?.username}`}>Profile</a></li>
+			<button  on:click={signOut}>Logout</button>
 		</ul>
 	</div>
 </div>
@@ -130,7 +122,10 @@
 </div>
 <br />
 <br />
-<h1 class="text-3xl font-bold">Your projects</h1>
+<div class="nameContainer">
+	<h1 class="text-3xl font-bold">Your projects</h1>
+	<button class="btn btn-outline">Create Project</button>
+</div>
 <br />
 <br />
 <div class="flex w-full">

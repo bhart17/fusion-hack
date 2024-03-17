@@ -6,6 +6,9 @@
 	import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
 
 	$: watching = $userData?.watching.includes(data.id);
+	
+	let items = data.project?.items;
+
 
 	async function watchProject() {
 		await updateDoc(doc(firestore.users, $user?.uid), { watching: arrayUnion(data.id) });
@@ -39,11 +42,36 @@
 	{/if}
 	<p class="text-center text-xl">Supplies needed / already received</p>
 	<div class="card w-3/6 bg-base-100 shadow-xl">
-		<div class="card-body text-xl">
-			<p>☐ Thread</p>
-			<p>🗹 Silk</p>
-		</div>
+		<div class="overflow-x-auto">
+			<table class="table">
+			  <!-- head -->
+			  <thead>
+				<tr>
+				  <th>Name</th>
+				  <th>Amount</th>
+				  <th>Needed</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<!-- row  -->
+				{#each data.project?.items ?? [] as item}
+				<tr>
+				  <td>{item.name}</td>
+				  <td>{item.amount}</td>
+				  <td>
+					{#if item.needed}
+					<input type="checkbox" class="checkbox" disabled checked />
+					{:else}
+					<input type="checkbox" class="checkbox" disabled />
+					{/if}
+				  </td>
+				</tr>
+				{/each}
+			  </tbody>
+			</table>
+		  </div>
 	</div>
+</div>
 	<!-- <p class="text-center text-xl py-2">Feed</p>
 <div class="justify-center flex py-4">
 	<div
@@ -107,4 +135,4 @@
 		</div>
 	</div>
 </div> -->
-</div>
+

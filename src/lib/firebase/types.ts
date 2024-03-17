@@ -18,7 +18,7 @@ type ProjectDoc = {
 	active: boolean;
 	host: string;
 	uploaded: number;
-	items: {name: string; amount: number; needed: boolean}[];
+	items: { name: string; amount: number; needed: boolean }[];
 	image: string;
 };
 

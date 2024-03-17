@@ -19,24 +19,24 @@ import { firestore } from '$lib/firebase/client/firestore';
 // import { firestore } from '$lib/firebase/client/firestore';
 
 async function signIn(email: string, password: string) {
-	try { 
+	try {
 		const credential = await signInWithEmailAndPassword(auth, email, password);
 		const idToken = await credential.user.getIdToken();
 
-	const res = await fetch('/api/auth', {
-		method: 'post',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({ idToken })
-	});
+		const res = await fetch('/api/auth', {
+			method: 'post',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ idToken })
+		});
 
-	if (res.ok) {
-		const snap = await getDoc(doc(firestore.users, get(user)?.uid ?? ''));
-		if (!snap.exists()) goto('/signup');
-	}
+		if (res.ok) {
+			const snap = await getDoc(doc(firestore.users, get(user)?.uid ?? ''));
+			if (!snap.exists()) goto('/signup');
+		}
 
-	return;
+		return;
 	} catch (e: any) {
 		return e.message;
 	}

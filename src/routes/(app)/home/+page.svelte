@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { signIn, signOut } from '$lib/firebase/login';
-	import { user, userData } from '$lib/firebase/client/auth';
+
 	export let data;
 </script>
+
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="Home" />
@@ -21,25 +21,27 @@
 			</div>
 		{/if}
 		{#each data.watching as watchedProject}
-		<div class="card card-compact w-96 bg-base-100 shadow-xl h-96">
-			<figure class="h-64">
-				{#if watchedProject.image === ''}
-					<img
-						src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
-						alt="Sustainable clothing logo"
-					/>
-				{/if}
-				<img src={watchedProject.image} alt="Sustainable clothing logo" />
-			</figure>
-			<div class="card-body">
-				<h2 class="card-title">{watchedProject.title}</h2>
-				<p>{watchedProject.description}</p>
-				<div class="card-actions justify-end">
-					<a href={`/project-${watchedProject.id}`} class="btn btn-primary">View</a>
+			<div class="card card-compact w-96 bg-base-100 shadow-xl h-96">
+				<figure class="h-64">
+					{#if watchedProject.image === ''}
+						<img
+							src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
+							alt="Sustainable clothing logo"
+							class="w-full object-cover"
+						/>
+					{:else}
+						<img src={watchedProject.image} alt="Sustainable clothing logo" class="w-full object-cover" />
+					{/if}
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">{watchedProject.title}</h2>
+					<p>{watchedProject.description}</p>
+					<div class="card-actions justify-end">
+						<a href={`/project-${watchedProject.id}`} class="btn btn-primary">View</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="divider divider-horizontal"></div>
+			<!-- <div class="divider divider-horizontal"></div> -->
 		{/each}
 	</div>
 
@@ -66,9 +68,11 @@
 						<img
 							src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
 							alt="Sustainable clothing logo"
+							class="w-full object-cover"
 						/>
+					{:else}
+						<img src={hostedProject.image} alt="Sustainable clothing logo" class="w-full object-cover" />
 					{/if}
-					<img src={hostedProject.image} alt="Sustainable clothing logo" />
 				</figure>
 				<div class="card-body">
 					<h2 class="card-title">{hostedProject.title}</h2>
@@ -78,7 +82,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="divider divider-horizontal"></div>
+			<!-- <div class="divider divider-horizontal"></div> -->
 		{/each}
 		<a href="\display" class="btn btn-outline btn-success">View all</a>
 	</div>

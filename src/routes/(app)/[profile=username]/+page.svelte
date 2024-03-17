@@ -24,6 +24,7 @@
 		followerCount--;
 	}
 </script>
+
 <svelte:head>
 	<title>Profile</title>
 	<meta name="description" content="Profile" />
@@ -31,9 +32,13 @@
 
 <div class="flex flex-col gap-4 p-4">
 	<div class="flex items-center gap-4">
-		<div class="avatar">
+		<div class="avatar placeholder">
 			<div class="w-48 h-48 rounded-full">
-				<img src={data.user.image} alt="Profile" />
+				{#if data.user.image}
+					<img src={data.user.image} alt="Profile" />
+				{:else}
+					<span class="text-8xl">👤</span>
+				{/if}
 			</div>
 		</div>
 		<div class="flex flex-col">
@@ -41,7 +46,7 @@
 				<h2 class="text-4xl font-bold">{data.user.name}</h2>
 				<h2 class="text-2xl">@{data.user.username}</h2>
 				{#if ownPage}
-					<button class="btn btn-outline">Edit Profile</button>
+					<a href={`/@${data.user.username}/edit`} class="btn btn-outline">Edit Profile</a>
 				{:else if isFollowing}
 					<button class="btn btn-outline" on:click={handleUnfollow}>Unfollow</button>
 				{:else}

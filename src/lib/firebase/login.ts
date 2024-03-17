@@ -19,8 +19,9 @@ import { firestore } from '$lib/firebase/client/firestore';
 // import { firestore } from '$lib/firebase/client/firestore';
 
 async function signIn(email: string, password: string) {
-	const credential = await signInWithEmailAndPassword(auth, email, password);
-	const idToken = await credential.user.getIdToken();
+	try { 
+		const credential = await signInWithEmailAndPassword(auth, email, password);
+		const idToken = await credential.user.getIdToken();
 
 	const res = await fetch('/api/auth', {
 		method: 'post',
@@ -33,6 +34,11 @@ async function signIn(email: string, password: string) {
 	if (res.ok) {
 		const snap = await getDoc(doc(firestore.users, get(user)?.uid ?? ''));
 		if (!snap.exists()) goto('/signup');
+	}
+
+	return;
+	} catch (e: any) {
+		return e.message;
 	}
 }
 

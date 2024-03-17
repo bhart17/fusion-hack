@@ -84,7 +84,7 @@
 			</div>
 			<!-- <div class="divider divider-horizontal"></div> -->
 		{/each}
-		<a href="\display" class="btn btn-outline btn-success h-96">View all</a>
+		<a href="/display" class="btn btn-outline btn-success h-96">View all</a>
 	</div>
 	<a href="/all" class="btn btn-outline btn-success">Browse all projects</a>
 </div>

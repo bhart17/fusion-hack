@@ -67,6 +67,7 @@
 		</div>
 		<div class="divider divider-horizontal"></div>
 	{/each}
+	<button class="btn btn-outline btn-success" style="margin-top: 9%">View all</button>
 </div>
 <br />
 <br />

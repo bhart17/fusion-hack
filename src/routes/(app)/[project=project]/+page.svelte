@@ -95,6 +95,7 @@
 			</table>
 		</div>
 	</div>
+	<progress class="progress progress-primary w-full max-w-xl" value={data.project?.items.reduce((total, item) => total + item.have, 0)} max={data.project?.items.reduce((total, item) => total + item.amount, 0)}></progress>
 	{#if !owned}
 	<p class="text-center text-xl">Donate</p>
 	<div class="card bg-base-100 shadow-xl max-w-xl w-full">
@@ -131,7 +132,7 @@
 	<button
 		class="btn max-w-xl w-full"
 		on:click={donate}
-		disabled={!donatingItems.reduce((total, item) => total + item.amount, 0)}
+		disabled={donatingItems.reduce((total, item) => total + item.amount, 0) < 1}
 		>Submit Donation</button
 	>{/if}
 </div>

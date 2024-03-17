@@ -45,7 +45,7 @@
 	<meta name="description" content="New Project" />
 </svelte:head>
 
-<div class="justify-center flex py-4">
+<div class="justify-center flex p-4">
 	<div class="card w-full max-w-xl bg-base-100 shadow-xl">
 		<figure>
 			{#if previewURL}<img src={previewURL} alt="Project" />{:else}<img

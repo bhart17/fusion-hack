@@ -13,9 +13,9 @@
 	<h1 class="text-3xl font-bold">Currently Watching</h1>
 
 	<div class="flex flex-col lg:flex-row items-center gap-2 w-full">
-		{#if data.hosted.length === 0}
+		{#if data.watching.length === 0}
 			<div class="card card-compact w-96 bg-base-100 shadow-xl h-96">
-				<div class="card-body btn btn-ghost text-xl">You do not currently have any projects.</div>
+				<div class="card-body btn btn-ghost text-xl">You are not currently watching any projects.</div>
 			</div>
 		{/if}
 		{#each data.watching.slice(0, 4) as watchingProject}

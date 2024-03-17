@@ -18,6 +18,10 @@
 		await updateDoc(doc(firestore.users, $user?.uid), { watching: arrayRemove(data.id) });
 	}
 </script>
+<svelte:head>
+	<title>Project Details</title>
+	<meta name="description" content="Project Details" />
+</svelte:head>
 
 <div class="flex flex-col items-center gap-4 py-4">
 	<div class="card card-compact w-3/6 bg-base-100 shadow-xl">

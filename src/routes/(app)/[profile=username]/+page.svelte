@@ -24,6 +24,10 @@
 		followerCount--;
 	}
 </script>
+<svelte:head>
+	<title>Profile</title>
+	<meta name="description" content="Profile" />
+</svelte:head>
 
 <div class="flex flex-col gap-4 p-4">
 	<div class="flex items-center gap-4">

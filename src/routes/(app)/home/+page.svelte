@@ -4,6 +4,10 @@
 	import { user, userData } from '$lib/firebase/client/auth';
 	export let data;
 </script>
+<svelte:head>
+	<title>Home</title>
+	<meta name="description" content="Home" />
+</svelte:head>
 
 <div class="flex flex-col p-4 gap-6">
 	<h1 class="text-3xl font-bold">Currently Watching</h1>

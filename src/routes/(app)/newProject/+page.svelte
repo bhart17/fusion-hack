@@ -38,6 +38,10 @@
 		}
 	}
 </script>
+<svelte:head>
+	<title>New Project</title>
+	<meta name="description" content="New Project" />
+</svelte:head>
 
 <div class="createProjectContainer justify-center flex py-4">
 <div class="card w-96 bg-base-100 shadow-xl">

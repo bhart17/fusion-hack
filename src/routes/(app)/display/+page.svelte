@@ -3,6 +3,10 @@
 	import { user, userData } from '$lib/firebase/client/auth';
 	export let data
 </script>
+<svelte:head>
+	<title>Active Projects</title>
+	<meta name="description" content="Active Projects" />
+</svelte:head>
 
 <br />
 <br />

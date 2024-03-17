@@ -16,6 +16,9 @@
 		await updateDoc(doc(firestore.users, $user?.uid), { watching: arrayRemove(data.id) });
 	}
 
+	let donatingItems = data.project?.items.map((item) => ({name: item.name, amount: 0}));
+
+	async function donate() {}
 </script>
 
 <svelte:head>
@@ -27,14 +30,18 @@
 	<div class="card max-w-xl w-full bg-base-100 shadow-xl">
 		<figure>
 			{#if data.project?.image === ''}
-						<img
-							src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
-							alt="Sustainable clothing logo"
-							class="max-h-96 w-full object-cover"
-						/>
-					{:else}
-						<img src={data.project?.image} alt="Sustainable clothing logo" class="max-h-96 w-full object-cover" />
-					{/if}
+				<img
+					src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
+					alt="Sustainable clothing logo"
+					class="max-h-96 w-full object-cover"
+				/>
+			{:else}
+				<img
+					src={data.project?.image}
+					alt="Sustainable clothing logo"
+					class="max-h-96 w-full object-cover"
+				/>
+			{/if}
 		</figure>
 		<div class="card-body">
 			<a href={`/@${data.user?.username}`} class="btn">
@@ -54,6 +61,7 @@
 	{:else}
 		<button class="btn max-w-xl w-full" on:click={watchProject}>Watch</button>
 	{/if}
+
 	<p class="text-center text-xl">Supplies Needed</p>
 	<div class="card bg-base-100 shadow-xl max-w-xl w-full">
 		<div class="overflow-x-auto">
@@ -85,78 +93,29 @@
 			</table>
 		</div>
 	</div>
-</div>
-
-
-
-<style>
-
-</style>
-
-
-
-
-	<!-- <p class="text-center text-xl py-2">Feed</p>
-<div class="justify-center flex py-4">
-	<div
-		class="w-3/6 h-96 carousel carousel-vertical bg-base-100 rounded-box shadow-xl"
-	>
-		<div class="carousel-item h-96" style="margin-left:30px; margin-right:30px;">
-			&nbsp<br />
-			25/3/2024 2:44am
-			<br />
-			&nbsp<br />
-			Thank you for your support! I have obtained all the materials i need for my dress.
-		</div>
-		<div class="carousel-item h-full" style="margin-left:30px; margin-right:30px;">
-			&nbsp<br />
-			25/3/2024 2:44am
-			<br />
-			&nbsp<br />
-			I NEED HELP
-		</div>
-		<div class="carousel-item h-full" style="margin-left:30px; margin-right:30px;">
-			&nbsp<br />
-			24/3/2024 2:44am
-			<br />
-			&nbsp<br />
-			I need one more roll of silk!
-		</div>
-		<div class="carousel-item h-full" style="margin-left:30px; margin-right:30px;">
-			&nbsp<br />
-			23/3/2024 2:44am
-			<br />
-			&nbsp<br />
-			I need some more red velvet!
-		</div>
-		<div class="carousel-item h-full" style="margin-left:30px; margin-right:30px;">
-			&nbsp<br />
-			22/3/2024 2:44am
-			<br />
-			&nbsp<br />
-			I need some string!
-		</div>
-		<div class="carousel-item h-full" style="margin-left:30px; margin-right:30px;">
-			&nbsp<br />
-			21/3/2024 2:44am
-			<br />
-			&nbsp<br />
-			Please provide me some apples.
-		</div>
-		<div class="carousel-item h-full" style="margin-left:30px; margin-right:30px;">
-			&nbsp<br />
-			17/3/2024 2:44am
-			<br />
-			&nbsp<br />
-			I need SILK
-		</div>
-		<div class="carousel-item h-full" style="margin-left:30px; margin-right:30px;">
-			&nbsp<br />
-			16/3/2024 2:44am
-			<br />
-			&nbsp<br />
-			Testing
+	<p class="text-center text-xl">Donate</p>
+	<div class="card bg-base-100 shadow-xl max-w-xl w-full">
+		<div class="overflow-x-auto">
+			<table class="table">
+				<!-- head -->
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- row  -->
+					{#each donatingItems as item}
+						<tr>
+							<td>{item.name}</td>
+							<td><input class="input w-full" type="number" bind:value={item.amount} /></td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
 		</div>
 	</div>
-</div> -->
+	<button class="btn max-w-xl w-full">Submit Donation</button>
 
+</div>

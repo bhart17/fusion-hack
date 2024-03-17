@@ -16,10 +16,9 @@ type ProjectDoc = {
 	title: string;
 	description: string;
 	active: boolean;
-	host: Array<string>;
+	host: string;
 	uploaded: number;
-	donatedobj: CollectionReference;
-	neededobj: CollectionReference;
+	items: {name: string; amount: number; needed: boolean}[];
 	image: string;
 };
 

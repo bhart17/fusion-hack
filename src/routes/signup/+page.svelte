@@ -82,12 +82,6 @@
 	async function upload(event: Event) {
 		uploading = true;
 		const file: File = (event.target as HTMLInputElement).files![0];
-		const options = {
-			maxSizeMB: 0.5,
-			maxWidthOrHeight: 720,
-			useWebWorker: true,
-			fileType: 'image/jpeg'
-		};
 		try {
 			previewURL = URL.createObjectURL(file);
 			newUser.image = await uploadFile(file, `profilepics/${$user?.uid ?? ''}`);

@@ -144,11 +144,12 @@
 			<figure>
 				{#if hostedProject.image === ''}
 					<img
-						src={'https://media.istockphoto.com/id/1283569480/vector/recycling-environment-label-with-on-white-background.jpg?s=612x612&w=0&k=20&c=8LhkYEW6wrXjPHLJ7xxu1-DdospS-0jhAo-YeRrlNk4='}
+						src={'https://as2.ftcdn.net/v2/jpg/04/83/35/33/1000_F_483353394_baks2bsYpfB8muZTnZJpXSUd2OtP2Gdn.jpg'}
 						alt="Sustainable clothing logo"
 					/>
 				{/if}
-				<img src={hostedProject.image} alt="Sustainable clothing logo" />
+				<img src={hostedProject.image} 
+				     alt="Sustainable clothing logo" />
 			</figure>
 			<div class="card-body">
 				<h2 class="card-title">{hostedProject.title}</h2>
